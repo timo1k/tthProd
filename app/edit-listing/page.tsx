@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import {
   ref,
   uploadBytes,
@@ -231,4 +231,10 @@ const EditListing: React.FC = () => {
   );
 };
 
-export default EditListing;
+const SuspenseWrapper = () => (
+  <Suspense>
+    <EditListing />
+  </Suspense>
+);
+
+export default SuspenseWrapper;

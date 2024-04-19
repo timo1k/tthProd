@@ -9,7 +9,6 @@ import { collection, getDocs, DocumentData } from "firebase/firestore";
 import { auth, db } from "./firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-
 interface Project {
   title: string;
   description: string;
@@ -78,7 +77,6 @@ function CardHoverEffectDemo({ projects }: Props) {
   );
 }
 function TypewriterEffectSmoothDemo() {
-
   // A web-based service to trade items with security
   const { user } = useAuth();
 
@@ -122,8 +120,9 @@ function TypewriterEffectSmoothDemo() {
             Profile
           </button>
         </Link>
-      ) : ( // If user is not logged in, render sign up and log in buttons
-      <div className="flex">
+      ) : (
+        // If user is not logged in, render sign up and log in buttons
+        <div className="flex">
           <Link href={"/signup"}>
             <button className="w-40 h-10 rounded-xl bg-black text-white border dark:border-white border-transparent text-sm hover:bg-white hover:text-black mr-2">
               Sign Up
@@ -142,11 +141,11 @@ function TypewriterEffectSmoothDemo() {
 
 import { User } from "firebase/auth"; // Import User type from firebase authentication module
 
-export function useAuth() {
+function useAuth() {
   const [user, setUser] = useState<User | null>(null); // Specify the type as User | null
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(user => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
       setUser(user);
     });
 
